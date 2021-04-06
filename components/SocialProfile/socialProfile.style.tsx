@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { themeGet } from 'styled-system';
+import styled from "styled-components"
+import { themeGet } from "@styled-system/theme-get"
 
 export const SocialProfileWrapper = styled.ul`
   display: inline-flex;
-`;
+`
 
 export const Tooltip = styled.div`
   position: absolute;
@@ -24,7 +24,7 @@ export const Tooltip = styled.div`
   transition: 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 0;
@@ -35,7 +35,7 @@ export const Tooltip = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
-`;
+`
 
 export const SocialProfileItem = styled.li`
   list-style: none;
@@ -53,7 +53,7 @@ export const SocialProfileItem = styled.li`
   }
 
   a {
-    color: ${themeGet('colors.textColor', '#292929')};
+    color: ${themeGet("colors.textColor", "#292929")};
     font-size: 22px;
     padding: 0.2em;
     display: block;
@@ -61,4 +61,4 @@ export const SocialProfileItem = styled.li`
       display: block;
     }
   }
-`;
+`

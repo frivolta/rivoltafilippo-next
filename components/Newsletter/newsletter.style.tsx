@@ -1,11 +1,10 @@
 import styled from "styled-components"
-import { themeGet } from "styled-system"
-import NewsletterBG from "../../images/newsletter-bg.webp"
+import { themeGet } from "@styled-system/theme-get"
 
 export const NewsletterWrapper = styled.div`
   margin: 0 auto;
   padding: 30px;
-  background-image: url(${NewsletterBG});
+  background-image: url("/images/newsletter-bg.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -137,7 +136,7 @@ export const ErrorMessage = styled.div`
     color: #d8000c;
   }
   a {
-    color: #FF224F;
+    color: #ff224f;
   }
 `
 

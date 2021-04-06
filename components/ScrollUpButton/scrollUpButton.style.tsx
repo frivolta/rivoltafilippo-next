@@ -1,5 +1,5 @@
+import { themeGet } from "@styled-system/theme-get"
 import styled from "styled-components"
-import { themeGet } from "styled-system"
 
 const ScrollUpButtonWrapper = styled.div`
   width: 40px;

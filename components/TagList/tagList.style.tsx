@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { themeGet } from "styled-system"
+import { themeGet } from "@styled-system/theme-get"
 
 export const TagListWrapper = styled.div`
   display: flex;
