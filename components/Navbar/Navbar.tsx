@@ -23,10 +23,6 @@ const MenuItems = [
     label: "Latest Project",
     url: "/project-budgety",
   },
-  {
-    label: "Contact",
-    url: "/contact",
-  },
 ]
 
 const Navbar: React.FunctionComponent<NavbarProps> = ({

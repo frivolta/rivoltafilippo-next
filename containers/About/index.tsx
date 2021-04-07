@@ -72,7 +72,7 @@ const About: React.FunctionComponent<AboutProps> = (props) => {
           />
         </a>
         <br />
-        <a href="/contact">
+        <a href="mailto:info@filipporivolta.it">
           <Button
             title="Contact me"
             type="button"
