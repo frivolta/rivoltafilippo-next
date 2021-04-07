@@ -1,16 +1,6 @@
 import React, { useState } from "react"
-import { IoIosSearch, IoIosClose } from "react-icons/io"
 
-import SearchContainer from "../../containers/SearchContainer/SearchContainer"
-import HeaderWrapper, {
-  NavbarWrapper,
-  Logo,
-  MenuWrapper,
-  NavSearchButton,
-  NavSearchWrapper,
-  SearchCloseButton,
-  NavSearchFromWrapper,
-} from "./navbar.style"
+import HeaderWrapper, { NavbarWrapper, Logo, MenuWrapper } from "./navbar.style"
 import { DrawerProvider } from "../Drawer/drawerContext"
 import Link from "next/link"
 import MobileMenu from "./MobileMenu"
@@ -73,9 +63,9 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
           <MobileMenu items={MenuItems} logo={LogoImage} />
         </DrawerProvider>
         <Logo>
-          <Link href="/">
+          <a href="/">
             <img src={LogoImage} alt="logo" />
-          </Link>
+          </a>
         </Logo>
         <MenuWrapper>
           <Menu items={MenuItems} />

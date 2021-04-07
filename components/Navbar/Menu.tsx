@@ -24,7 +24,6 @@ const Menu: React.FunctionComponent<MenuProps> = ({
   const router = useRouter()
   // Add all classs to an array
   const addAllClasses = ["menu"]
-
   // className prop checking
   if (className) {
     addAllClasses.push(className)
@@ -44,11 +43,13 @@ const Menu: React.FunctionComponent<MenuProps> = ({
           )}
         </MenuItem>
       ))}
-      <Button
-        title="Curriculum PDF (IT)"
-        icon={<AiOutlineUser />}
-        iconPosition="left"
-      />
+      <a href="/downloads/rivoltafilippo-cv-01042021.pdf" target="_blank">
+        <Button
+          title="Curriculum PDF (IT)"
+          icon={<AiOutlineUser />}
+          iconPosition="left"
+        />
+      </a>
     </MenuItemWrapper>
   )
 }
