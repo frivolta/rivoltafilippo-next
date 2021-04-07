@@ -1,6 +1,9 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
 import { MenuItemWrapper, MenuItem } from "./navbar.style"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import Button from "../Button/button"
+import { AiOutlineUser } from "react-icons/ai"
 
 type MenuProps = {
   items: MenuItemsProps[]
@@ -18,6 +21,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({
   className,
   ...props
 }) => {
+  const router = useRouter()
   // Add all classs to an array
   const addAllClasses = ["menu"]
 
@@ -26,34 +30,25 @@ const Menu: React.FunctionComponent<MenuProps> = ({
     addAllClasses.push(className)
   }
 
-  const Data = useStaticQuery(graphql`
-    query {
-      downloadLink: file(
-        absolutePath: { regex: "/Filippo-Rivolta-Curriculum.pdf/" }
-      ) {
-        publicURL
-      }
-    }
-  `)
-
   return (
     <MenuItemWrapper className={addAllClasses.join(" ")} {...props}>
       {items.map((item, index) => (
-        <MenuItem key={index}>
+        <MenuItem
+          key={index}
+          className={router.pathname === item.url ? "active-link" : undefined}
+        >
           {item.external ? (
             <a href={item.url}>{item.label}</a>
           ) : (
-            <Link to={item.url} activeClassName="active-link">
-              {item.label}
-            </Link>
+            <Link href={item.url}>{item.label}</Link>
           )}
         </MenuItem>
       ))}
-      <MenuItem>
-        <a href={Data.downloadLink.publicURL} target="_blank">
-          Curriculum PDF (IT)
-        </a>
-      </MenuItem>
+      <Button
+        title="Curriculum PDF (IT)"
+        icon={<AiOutlineUser />}
+        iconPosition="left"
+      />
     </MenuItemWrapper>
   )
 }

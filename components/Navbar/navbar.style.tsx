@@ -71,7 +71,9 @@ export const MenuItem = styled.li`
     &:hover {
       color: ${themeGet("colors.textColor", "#292929")};
     }
-    &.active-link {
+  }
+  &.active-link {
+    a {
       color: ${themeGet("colors.textColor", "#292929")};
       font-weight: ${themeGet("fontWeights.4", "500")};
     }

@@ -1,9 +1,6 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import { IoIosSearch, IoIosClose } from "react-icons/io"
-import { DrawerProvider } from "components/Drawer/drawerContext"
-import Menu from "./menu"
-import MobileMenu from "./mobileMenu"
+
 import SearchContainer from "../../containers/SearchContainer/SearchContainer"
 import HeaderWrapper, {
   NavbarWrapper,
@@ -14,7 +11,10 @@ import HeaderWrapper, {
   SearchCloseButton,
   NavSearchFromWrapper,
 } from "./navbar.style"
-import LogoImage from "../../images/logo-servo-white.svg"
+import { DrawerProvider } from "../Drawer/drawerContext"
+import Link from "next/link"
+import MobileMenu from "./MobileMenu"
+import Menu from "./menu"
 
 type NavbarProps = {
   className?: string
@@ -58,6 +58,9 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
   // Add all classs to an array
   const addAllClasses = ["header"]
 
+  // Load logo image path
+  const LogoImage = "/images/logo-servo-white.svg"
+
   // className prop checking
   if (className) {
     addAllClasses.push(className)
@@ -70,7 +73,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
           <MobileMenu items={MenuItems} logo={LogoImage} />
         </DrawerProvider>
         <Logo>
-          <Link to="/">
+          <Link href="/">
             <img src={LogoImage} alt="logo" />
           </Link>
         </Logo>
@@ -86,7 +89,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         </NavSearchButton>
       </NavbarWrapper>
 
-      <NavSearchWrapper className={state.toggle === true ? "expand" : ""}>
+      {/*<NavSearchWrapper className={state.toggle === true ? "expand" : ""}>
         <NavSearchFromWrapper>
           <SearchContainer />
           <SearchCloseButton
@@ -97,7 +100,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
             <IoIosClose />
           </SearchCloseButton>
         </NavSearchFromWrapper>
-      </NavSearchWrapper>
+  </NavSearchWrapper>*/}
     </HeaderWrapper>
   )
 }

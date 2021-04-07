@@ -1,8 +1,4 @@
 import React, { useContext } from "react"
-import { Link } from "gatsby"
-import Drawer from "components/Drawer/drawer"
-import { DrawerContext } from "components/Drawer/drawerContext"
-import Menu from "./menu"
 import {
   MobileMenuWrapper,
   DrawerContentWrapper,
@@ -12,6 +8,10 @@ import {
   HamburgerIcon,
 } from "./navbar.style"
 import { FiX } from "react-icons/fi"
+import Drawer from "../Drawer/drawer"
+import { DrawerContext } from "../Drawer/drawerContext"
+import Link from "next/link"
+import Menu from "./menu"
 
 type MobileMenuProps = {
   items: any
@@ -50,7 +50,7 @@ const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
         <DrawerContentWrapper>
           <DrawerHead>
             <DrawerLogo>
-              <Link to="/">
+              <Link href="/">
                 <img src={logo} alt="logo" />
               </Link>
             </DrawerLogo>
