@@ -80,13 +80,13 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         <MenuWrapper>
           <Menu items={MenuItems} />
         </MenuWrapper>
-        <NavSearchButton
+        {/*<NavSearchButton
           type="button"
           aria-label="search"
           onClick={toggleHandle}
         >
           <IoIosSearch size="23px" />
-        </NavSearchButton>
+      </NavSearchButton>*/}
       </NavbarWrapper>
 
       {/*<NavSearchWrapper className={state.toggle === true ? "expand" : ""}>
