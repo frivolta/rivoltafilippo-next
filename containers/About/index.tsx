@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import {
   IoLogoInstagram,
   IoLogoLinkedin,
@@ -29,7 +28,7 @@ const SocialLinks = [
 ]
 interface AboutProps {}
 
-const About: React.FunctionComponent<AboutProps> = (props) => {
+const About: React.FunctionComponent<AboutProps> = () => {
   const downloadLinkUrl = "/downloads/rivoltafilippo-cv-01042021.pdf"
 
   return (

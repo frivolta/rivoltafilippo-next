@@ -11,7 +11,7 @@ import { FiX } from "react-icons/fi"
 import Drawer from "../Drawer/drawer"
 import { DrawerContext } from "../Drawer/drawerContext"
 import Link from "next/link"
-import Menu from "./menu"
+import Menu from "./Menu"
 
 type MobileMenuProps = {
   items: any

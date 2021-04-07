@@ -24,6 +24,8 @@ const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
+    setSuccess(undefined)
+    setError(undefined)
     console.log("Adding to newsletter")
   }
   return (

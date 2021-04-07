@@ -1,10 +1,9 @@
-import React, { useState } from "react"
+import React from "react"
 
 import HeaderWrapper, { NavbarWrapper, Logo, MenuWrapper } from "./navbar.style"
 import { DrawerProvider } from "../Drawer/drawerContext"
-import Link from "next/link"
 import MobileMenu from "./MobileMenu"
-import Menu from "./menu"
+import Menu from "./Menu"
 
 type NavbarProps = {
   className?: string
@@ -29,18 +28,6 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
   className,
   ...props
 }) => {
-  const [state, setState] = useState({
-    toggle: false,
-    search: "",
-  })
-
-  const toggleHandle = () => {
-    setState({
-      ...state,
-      toggle: !state.toggle,
-    })
-  }
-
   // Add all classs to an array
   const addAllClasses = ["header"]
 

@@ -1,5 +1,4 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import { IntroWrapper, IntroImage, IntroTitle, Desciption } from "./style"
 import { IoLogoInstagram, IoLogoLinkedin } from "react-icons/io"
 import Button from "../../../components/Button/button"
@@ -21,7 +20,7 @@ const SocialLinks = [
   },
 ]
 
-const Intro: React.FunctionComponent<IntroProps> = (props) => {
+const Intro: React.FunctionComponent<IntroProps> = () => {
   const AuthorImage = "/images/author.jpg"
 
   return (

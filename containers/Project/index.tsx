@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import {
   ProjectWrapper,
   ProjectDetails,
@@ -8,20 +7,13 @@ import {
   ProjectStructureImage,
 } from "./style"
 
-import IconList from "../../components/IconList/iconList"
 import FullTitle from "../../components/FullTitle/fullTitle"
 import Timeline from "../../components/Timeline/timeline"
 import TagList from "../../components/TagList/tagList"
 
 interface ProjectProps {}
 
-type Icon = {
-  id: string
-  publicURL: string
-  name: string
-}
-
-const Project: React.FunctionComponent<ProjectProps> = (props) => {
+const Project: React.FunctionComponent<ProjectProps> = () => {
   //Define array of timeline
   const timelineItems = [
     {

@@ -1,5 +1,4 @@
 import * as React from "react"
-import Image from "gatsby-image"
 import { IconWrapper } from "./style"
 
 type Icon = {
@@ -15,7 +14,7 @@ type IconListProps = {
 const IconList: React.FunctionComponent<IconListProps> = ({ icons }) => {
   return (
     <div>
-      {icons.map(icon => (
+      {icons.map((icon) => (
         <IconWrapper key={icon.id}>
           <img src={icon.url} alt={icon.name} />
           <span>{icon.title}</span>

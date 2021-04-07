@@ -5,7 +5,7 @@ import Project from "../containers/Project"
 
 type ProjectPageProps = {}
 
-const ProjectPage: React.FunctionComponent<ProjectPageProps> = (props) => {
+const ProjectPage: React.FunctionComponent<ProjectPageProps> = () => {
   return (
     <Layout>
       <SEO
