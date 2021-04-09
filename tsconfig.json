@@ -36,5 +36,6 @@
 , "pages/_app.js"  ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "plugins": [["styled-components", { "ssr": true }]]
 }

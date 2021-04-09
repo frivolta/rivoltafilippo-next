@@ -1,16 +1,20 @@
 import * as React from "react"
 import PersonalBlogWrapper from "./style"
 import Intro from "./Intro"
+import Posts from "./Posts"
+import PostType from "../../types/post"
 
-type PersonalBlogProps = {}
+type PersonalBlogProps = {
+  posts: PostType[]
+}
 
 const PersonalBlog: React.FunctionComponent<PersonalBlogProps> = ({
-  ...props
+  posts,
 }) => {
   return (
-    <PersonalBlogWrapper {...props}>
+    <PersonalBlogWrapper>
       <Intro />
-      {/*<Posts />*/}{" "}
+      <Posts posts={posts} />
     </PersonalBlogWrapper>
   )
 }

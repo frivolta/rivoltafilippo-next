@@ -1,12 +1,32 @@
 import React from "react"
 import Layout from "../components/layout"
 import PersonalBlog from "../containers/HomePage"
-import "../styles/Home.module.css"
+import { getAllPosts } from "../lib/api"
+import PostType from "../types/post"
 
-export default function Home() {
+type Props = {
+  allPosts: PostType[]
+}
+
+export default function Home({ allPosts }: Props) {
   return (
     <Layout>
-      <PersonalBlog />
+      <PersonalBlog posts={allPosts} />
     </Layout>
   )
+}
+
+export const getStaticProps = async () => {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "excerpt",
+  ])
+
+  return {
+    props: { allPosts },
+  }
 }
