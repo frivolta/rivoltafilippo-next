@@ -15,9 +15,9 @@ import Image from "next/image"
 interface PostCardProps {
   image: string
   title: string
-  excerpt: string
+  excerpt?: string
   url: string
-  date: string
+  date?: string
   className?: string
 }
 
@@ -72,13 +72,14 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
           <PostTitle className="post_title">
             <Link href={url}>{title}</Link>
           </PostTitle>
-
-          <Excerpt
-            dangerouslySetInnerHTML={{
-              __html: excerpt,
-            }}
-            className="excerpt"
-          />
+          {excerpt ? (
+            <Excerpt
+              dangerouslySetInnerHTML={{
+                __html: excerpt,
+              }}
+              className="excerpt"
+            />
+          ) : null}
         </PostContent>
       </PostDetails>
     </PostCardWrapper>
