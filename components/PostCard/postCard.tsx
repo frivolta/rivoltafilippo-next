@@ -40,8 +40,9 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
 
   const dateFormatter = (date: string): string => {
     const newDate = new Date(date)
-    const month = newDate.toLocaleString("default", { month: "short" })
+    const month = newDate.toLocaleString("en", { month: "short" })
     const year = newDate.toLocaleString("default", { year: "numeric" })
+    console.log(month)
     return `${newDate.getDate()} <span>${month} <strong>${year}</strong></span>`
   }
 

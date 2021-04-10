@@ -1,8 +1,9 @@
 ---
-title: "Dynamic Routing and Static Generation"
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
-coverImage: "/images/blog/react-boilerplate-tooling.jpg"
-date: "2020-03-15"
+title: "Typing React Context to avoid an undefined default value"
+excerpt: "React Context API is really useful when it comes to sharing data between disconnected components without prop drilling, here is a way of correctly type the Context API to avoid a default value or a non-null TypeScript assertion."
+coverImage: "/images/blog/typing-react-context-to-avoid-undefined.jpg"
+tags: ["react", "typescript", "context api", "custom hooks"]
+date: "2020-09-04"
 author:
   name: JJ Kasper
   picture: "/assets/blog/authors/jj.jpeg"
@@ -11,7 +12,8 @@ ogImage:
 ---
 
 React Context API is really useful when it comes to sharing data between disconnected components without prop drilling.
-In the last few days, I worked on a side project and I gave Context a shot to share my authenticated user information' between route components. Following a very useful pattern shared by **Kent C. Dodds** on his website with the title of [How to user React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively) **I made a custom hook to handle the authentication flow logic and shared the returned value with context to be available throughout the whole application**.
+In the last few days, I worked on a side project and I gave Context a shot to share my authenticated user information' between route components. Following a very useful pattern shared by **Kent C. Dodds** on his website with the title of <a href="https://kentcdodds.com/blog/how-to-use-react-context-effectively" target="_blank">How to user React Context effectively</a>
+**I made a custom hook to handle the authentication flow logic and shared the returned value with context to be available throughout the whole application**.
 
 _Note: I am not going through the basics of React Context API and React Hooks since is out of the scope of the article._
 
@@ -74,35 +76,7 @@ Here the whole code:
 
 **useSidebarContext.tsx**
 
-```typescript
-import * as React from "react"
-import { useSidebar, UseSidebar } from "./useSidebar"
-
-interface Props {
-  children: React.ReactNode
-}
-
-// Generate context
-const SidebarContext = React.createContext<UseSidebar>(undefined!)
-
-// Generate provider
-const SidebarProvider = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useSidebar(true)
-
-  return (
-    <SidebarContext.Provider value={[isOpen, setIsOpen]}>
-      {children}
-    </SidebarContext.Provider>
-  )
-}
-
-// Custom context hook
-const useSidebarContext = () => {
-  return React.useContext(SidebarContext)
-}
-
-export { SidebarProvider, useSidebarContext }
-```
+`gist:frivolta/9e082ee8c30c8037170a0aa4b6d27284`
 
 ## Consuming the context
 
@@ -118,7 +92,7 @@ Our context will be now available to the App and his child components. For examp
 
 `gist:frivolta/9e8c5f35df9c63e353eed60a364379f9`
 
-You can have a look at the [whole code on Code Sandbox](https://codesandbox.io/s/typing-react-context-v1-o2wns)
+You can have a look at the <a href="https://codesandbox.io/s/typing-react-context-v1-o2wns" target="_blank">whole code on Code Sandbox</a>
 
 ## Remove the non-null assertion and the default value
 
@@ -130,9 +104,7 @@ What we can do to achieve this is to create a generic function that wraps our co
 
 `gist:frivolta/fbfd74c16cd62edab862f32a497bf48b`
 
-**Note:** <a href="https://medium.com/@rivoltafilippo/why-you-should-use-generic-types-in-typescript-a-simple-example-4708e69a003b" target="_blank">
-
-I wrote an introduction to TypeScript generic's if you already don't know how they work</a>
+**Note:** <a href="https://medium.com/@rivoltafilippo/why-you-should-use-generic-types-in-typescript-a-simple-example-4708e69a003b" target="_blank"> I wrote an introduction to TypeScript generic's if you already don't know how they work</a>
 
 In this function we create a context with a generic type and undefined as the default value, we then create another function to check whether the generic context value is defined, if it is not defined we throw an error, for this reason, _useGenericContext_ will never return an undefined value. Lastly, since we want our _createGenericContext_ to return a tuple, we use "as const" after the returned array, making the number of elements fixed and with a defined type inferred by TypeScript.
 
