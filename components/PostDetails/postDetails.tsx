@@ -108,7 +108,7 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
             source={markdownContent}
             renderers={{
               code: CodeBlock,
-              Link: (props: LinkProps) => {
+              link: (props: LinkProps) => {
                 return (
                   <a
                     href={props.href}
