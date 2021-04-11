@@ -267,7 +267,7 @@ export const PostShare = styled.div`
 `
 export const BlogPostDetailsWrapper = styled.div`
   margin: 0 auto;
-  padding: 90px 0 120px 0;
+  padding: 90px 0 0 0;
   @media (min-width: 990px) {
     width: 900px;
   }

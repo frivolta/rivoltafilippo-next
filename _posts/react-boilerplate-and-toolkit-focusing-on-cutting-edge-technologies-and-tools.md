@@ -10,7 +10,7 @@ ogImage:
   url: "/assets/blog/dynamic-routing/cover.jpg"
 ---
 
-**You can find the repository for this article and project at: <a href="https://github.com/frivolta/react-boilerplate-tooling" target="_blank"> this link </a>.**
+**You can find the repository for this article and project at: [this link](https://github.com/frivolta/react-boilerplate-tooling).**
 
 **Current status: _Working / Prototype_**
 

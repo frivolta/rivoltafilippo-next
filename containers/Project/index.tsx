@@ -5,6 +5,7 @@ import {
   ProjectPageTitle,
   ProjectStructureImageWrapper,
   ProjectStructureImage,
+  ProjectNotice,
 } from "./style"
 
 import FullTitle from "../../components/FullTitle/fullTitle"
@@ -50,6 +51,25 @@ const Project: React.FunctionComponent<ProjectProps> = () => {
     <ProjectWrapper>
       <ProjectDetails>
         <ProjectPageTitle>
+          <ProjectNotice>
+            <p>
+              <strong>
+                <span>Note:</span> Due to lack of time after the mvp relase this
+                project is going to be rebuild with one of the following tool
+                stack:
+              </strong>
+              <ul>
+                <li>
+                  Graphql, Apollo, NestJS, React, Postgres, Styled components,
+                  Cognito, Cypress.
+                </li>
+                <li>
+                  NestJS Rest Api, Postgres, React, Styled components, Cognito,
+                  Cypress.
+                </li>
+              </ul>
+            </p>
+          </ProjectNotice>
           <h2>
             <span>Budgety</span> is a <span>MERN stack</span> based web and
             native application. Cross-platform, everyday, cash flow and{" "}

@@ -14,8 +14,6 @@ import {
 } from "./newsletter.style"
 
 type NewsletterProps = {}
-const MAILCHIMP_URL =
-  "https://gmail.us3.list-manage.com/subscribe/post?u=7b240cd35ea9001459c3bc91a&amp;id=d0ed7120e8"
 
 const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
   const [email, setEmail] = useState("")
@@ -38,9 +36,8 @@ const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
           Get The Best Of All Hands Delivered To Your Inbox
         </NewsletterTitle>
         <NewsletterDescription>
-          Subscribe to our newsletter and stay updated.
+          Newsletter subscription is temprarily disabled 🙂
         </NewsletterDescription>
-        <MailchimpSubscribe url={MAILCHIMP_URL} />
         <NewsletterInputWrapper onSubmit={handleSubmit}>
           {success ? (
             <SuccessMessage>{success} 🙂</SuccessMessage>
@@ -53,6 +50,7 @@ const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
                 onChange={handleChange}
                 value={email}
                 required
+                disabled
               />
               <Button title="Subscribe" type="submit" />
             </>

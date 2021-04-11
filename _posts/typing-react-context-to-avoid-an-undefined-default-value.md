@@ -12,7 +12,7 @@ ogImage:
 ---
 
 React Context API is really useful when it comes to sharing data between disconnected components without prop drilling.
-In the last few days, I worked on a side project and I gave Context a shot to share my authenticated user information' between route components. Following a very useful pattern shared by **Kent C. Dodds** on his website with the title of <a href="https://kentcdodds.com/blog/how-to-use-react-context-effectively" target="_blank">How to user React Context effectively</a>
+In the last few days, I worked on a side project and I gave Context a shot to share my authenticated user information' between route components. Following a very useful pattern shared by **Kent C. Dodds** on his website with the title of [How to user React Context effectively](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
 **I made a custom hook to handle the authentication flow logic and shared the returned value with context to be available throughout the whole application**.
 
 _Note: I am not going through the basics of React Context API and React Hooks since is out of the scope of the article._
@@ -24,7 +24,25 @@ I made a simplified version of the pattern used on my project since the aim of t
 The custom hook will take care of handling the sidebar state and will return the current state and the setState action used to trigger a state change:
 
 **useSidebar.tsx**
-`gist:frivolta/4851b9188a08f6484293d59b73515704`
+
+```typescript
+import { useState, useEffect } from "react"
+
+export type UseSidebar = [
+  boolean,
+  React.Dispatch<React.SetStateAction<boolean>>
+]
+
+export const useSidebar = (newOpenValue: boolean): UseSidebar => {
+  const [isOpen, setIsOpen] = useState(true)
+
+  useEffect(() => {
+    setIsOpen(newOpenValue)
+  }, [newOpenValue])
+
+  return [isOpen, setIsOpen]
+}
+```
 
 ## The Context API
 
@@ -76,7 +94,35 @@ Here the whole code:
 
 **useSidebarContext.tsx**
 
-`gist:frivolta/9e082ee8c30c8037170a0aa4b6d27284`
+```typescript
+import * as React from "react"
+import { useSidebar, UseSidebar } from "./useSidebar"
+
+interface Props {
+  children: React.ReactNode
+}
+
+// Generate context
+const SidebarContext = React.createContext<UseSidebar>(undefined!)
+
+// Generate provider
+const SidebarProvider = ({ children }: Props) => {
+  const [isOpen, setIsOpen] = useSidebar(true)
+
+  return (
+    <SidebarContext.Provider value={[isOpen, setIsOpen]}>
+      {children}
+    </SidebarContext.Provider>
+  )
+}
+
+// Custom context hook
+const useSidebarContext = () => {
+  return React.useContext(SidebarContext)
+}
+
+export { SidebarProvider, useSidebarContext }
+```
 
 ## Consuming the context
 
@@ -84,15 +130,53 @@ We now need to place the Provider in the right position, so that all the provide
 
 **index.tsx**
 
-`gist:frivolta/9b162985396ab2b29e477287ab0092d7`
+```typescript
+import * as React from "react"
+import { render } from "react-dom"
+import { SidebarProvider, useSidebarContext } from "./useSidebarContext"
+import { ChildComponent } from "./childComponent"
+
+export const App = () => {
+  const [isOpen] = useSidebarContext()
+
+  return (
+    <div>
+      <p>Main component context: {isOpen ? "Open" : "Closed"}</p>
+      <ChildComponent />
+    </div>
+  )
+}
+
+const rootElement = document.getElementById("root")
+render(
+  <SidebarProvider>
+    <App />
+  </SidebarProvider>,
+  rootElement
+)
+```
 
 Our context will be now available to the App and his child components. For example, we can use it like this:
 
 **ChildComponent.tsx**
 
-`gist:frivolta/9e8c5f35df9c63e353eed60a364379f9`
+```typescript
+import React from "react"
+import { useSidebarContext } from "./useSidebarContext"
 
-You can have a look at the <a href="https://codesandbox.io/s/typing-react-context-v1-o2wns" target="_blank">whole code on Code Sandbox</a>
+export const ChildComponent: React.FC = () => {
+  const [isOpen, setIsOpen] = useSidebarContext()
+
+  return (
+    <>
+      <p>Sidebar is: {isOpen ? "Open" : "Closed"}</p>
+      <button onClick={() => setIsOpen(!isOpen)}>Toggle sidebar</button>
+    </>
+  )
+}
+```
+
+You can have a look at the [whole code on Code Sandbox](https://codesandbox.io/s/typing-react-context-v1-o2wns)
 
 ## Remove the non-null assertion and the default value
 
@@ -102,9 +186,27 @@ What we can do to achieve this is to create a generic function that wraps our co
 
 **createGenericContext.tsx**
 
-`gist:frivolta/fbfd74c16cd62edab862f32a497bf48b`
+```typescript
+import React from "react"
 
-**Note:** <a href="https://medium.com/@rivoltafilippo/why-you-should-use-generic-types-in-typescript-a-simple-example-4708e69a003b" target="_blank"> I wrote an introduction to TypeScript generic's if you already don't know how they work</a>
+export const createGenericContext = <T extends unknown>() => {
+  // Create a context with a generic parameter or undefined
+  const genericContext = React.createContext<T | undefined>(undefined)
+
+  // Check if the value provided to the context is defined or throw an error
+  const useGenericContext = () => {
+    const contextIsDefined = React.useContext(genericContext)
+    if (!contextIsDefined) {
+      throw new Error("useGenericContext must be used within a Provider")
+    }
+    return contextIsDefined
+  }
+
+  return [useGenericContext, genericContext.Provider] as const
+}
+```
+
+**Note:** [I wrote an introduction to TypeScript generic's if you already don't know how they work](https://medium.com/@rivoltafilippo/why-you-should-use-generic-types-in-typescript-a-simple-example-4708e69a003b)
 
 In this function we create a context with a generic type and undefined as the default value, we then create another function to check whether the generic context value is defined, if it is not defined we throw an error, for this reason, _useGenericContext_ will never return an undefined value. Lastly, since we want our _createGenericContext_ to return a tuple, we use "as const" after the returned array, making the number of elements fixed and with a defined type inferred by TypeScript.
 
@@ -114,8 +216,34 @@ With our new function we need to edit the _useSidebarContext_ file instead of us
 
 **useSidebarContext.tsx**
 
-`gist:frivolta/9a6a73f0857a90b6c53527602718ede2`
+```typescript
+import * as React from "react"
+import { useSidebar, UseSidebar } from "./useSidebar"
+import { createGenericContext } from "./createGenericContext"
+interface Props {
+  children: React.ReactNode
+}
 
-Here is the <a href="https://codesandbox.io/s/typing-react-context-v2-j1xwe" target="_blank">code sandbox link with the working code</a>.
+// Generate context
+const [
+  useSidebarContext,
+  SidebarContextProvider,
+] = createGenericContext<UseSidebar>()
+
+// Generate provider
+const SidebarProvider = ({ children }: Props) => {
+  const [isOpen, setIsOpen] = useSidebar(true)
+
+  return (
+    <SidebarContextProvider value={[isOpen, setIsOpen]}>
+      {children}
+    </SidebarContextProvider>
+  )
+}
+
+export { useSidebarContext, SidebarProvider }
+```
+
+Here is the [code sandbox link with the working code](https://codesandbox.io/s/typing-react-context-v2-j1xwe).
 
 **That’s it! Thank you if you arrived so far, understanding the concepts above gave me a great understanding of Context and TS world, I hope you found it helpful!**

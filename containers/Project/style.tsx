@@ -12,6 +12,25 @@ export const ProjectWrapper = styled.div`
   }
 `
 
+export const ProjectNotice = styled.div`
+  border: 1px solid ${themeGet("colors.primary")};
+  padding: 36px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+  span {
+    color: ${themeGet("colors.primary")};
+  }
+  ul {
+    margin-left: 16px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+`
+
 export const ProjectHeaderWrapper = styled.div`
   width: 870px;
   max-width: 100%;
