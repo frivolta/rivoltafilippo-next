@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import Button from "../Button/button"
 import Input from "../Input/input"
-import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 import {
   NewsletterWrapper,
