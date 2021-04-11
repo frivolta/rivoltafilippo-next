@@ -64,7 +64,7 @@ _Performance speed: **0.5300000193528831** milliseconds._
 
 ## Third solution
 
-Overall, t**he _reduce_ method at the beginning still has the better performance**. Between the last two solutions there is **no significant difference** in complexity and execution speed, but t**he second is cleaner and easier to read**. We can go a step further and take into account the **ES6 _Set_ feature**, which takes all values from an iterable object, in our case an array, but since every element in a set must be unique in the collection, **it skips the duplicates without any effort for us**.
+Overall, **the _reduce_ method at the beginning still has the better performance**. Between the last two solutions there is **no significant difference** in complexity and execution speed, but t**he second is cleaner and easier to read**. We can go a step further and take into account the **ES6 _Set_ feature**, which takes all values from an iterable object, in our case an array, but since every element in a set must be unique in the collection, **it skips the duplicates without any effort for us**.
 
 **When creating a Set keep in mind that null is treated like undefined and that it is a different concept from an array: a Set is a _"keyed collection"_ while the second is an _"indexed collection"_**
 
