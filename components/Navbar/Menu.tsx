@@ -43,9 +43,9 @@ const Menu: React.FunctionComponent<MenuProps> = ({
           )}
         </MenuItem>
       ))}
-      <a href="/downloads/rivoltafilippo-cv-01042021.pdf" target="_blank">
+      <a href="/downloads/filippo-rivolta-cv-en.pdf" target="_blank">
         <Button
-          title="Curriculum PDF (IT)"
+          title="Curriculum PDF "
           icon={<AiOutlineUser />}
           iconPosition="left"
         />

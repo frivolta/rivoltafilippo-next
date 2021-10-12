@@ -29,7 +29,7 @@ const SocialLinks = [
 interface AboutProps {}
 
 const About: React.FunctionComponent<AboutProps> = () => {
-  const downloadLinkUrl = "/downloads/rivoltafilippo-cv-01042021.pdf"
+  const downloadLinkUrl = "/downloads/filippo-rivolta-cv-en.pdf"
 
   return (
     <AboutWrapper>
@@ -64,7 +64,7 @@ const About: React.FunctionComponent<AboutProps> = () => {
         <a href={downloadLinkUrl} target="_blank">
           <Button
             className="no-space"
-            title="Download CV (IT)"
+            title="Download CV "
             type="button"
             iconPosition="left"
             icon={<IoIosDownload />}

@@ -42,8 +42,8 @@ const Intro: React.FunctionComponent<IntroProps> = () => {
         <b>client-side technologies.</b>
       </Desciption>
       <Desciption>
-        <a href="/downloads/rivoltafilippo-cv-01042021.pdf" target="_blank">
-          <Button title="Download CV (IT)" className="no-space margin-top" />
+        <a href="/downloads/filippo-rivolta-cv-en.pdf" target="_blank">
+          <Button title="Download CV " className="no-space margin-top" />
         </a>
       </Desciption>
       <SocialProfile items={SocialLinks} />
