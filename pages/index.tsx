@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import PersonalBlog from "../containers/HomePage"
-import { getAllPosts } from "../lib/api"
+import { getAllPosts, getAllPostsFromApi } from "../lib/api"
 import PostType from "../types/post"
 
 type Props = {
@@ -25,8 +25,9 @@ export const getStaticProps = async () => {
     "coverImage",
     "excerpt",
   ])
+  const allPostsFromApi = await getAllPostsFromApi()
 
   return {
-    props: { allPosts },
+    props: { allPosts, allPostsFromApi },
   }
 }
