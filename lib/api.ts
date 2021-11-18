@@ -2,8 +2,10 @@ import fs from "fs"
 import { join } from "path"
 import matter from "gray-matter"
 import axios from "axios"
-
-const API_URL = "https://rivoltafilippo-admin-api-stage-adfm4.ondigitalocean.app"
+import { GetAllPostsDto } from "./dto/get-all-posts.dto"
+import { PostApi } from "../types/post"
+import { GetPostBySlugInputDto, GetPostBySlugOutputDto } from "./dto/get-post-by-slug.dto"
+import { BadRequestError } from "../utils/CustomError/BadRequestError"
 
 const postsDirectory = join(process.cwd(), "_posts")
 
@@ -49,7 +51,27 @@ export function getAllPosts(fields: string[] = []) {
   return posts
 }
 
-export async function getAllPostsFromApi() {
-  const { data } = await axios.get(`${API_URL}/posts/public/all`)
-  return data.posts
+// From API
+const API_URL = "https://rivoltafilippo-admin-api-prod-wmm22.ondigitalocean.app"
+
+export async function getAllPostsFromApi():Promise<PostApi[]> {
+  try {
+    const { data } = await axios.get<GetAllPostsDto>(`${API_URL}/posts/public/all`)
+    return data.posts.sort((post1,post2)=>(post1.publishedAt>post2.publishedAt?-1:1))
+  }catch(err){
+    console.error(err)
+    throw new BadRequestError("Something went wrong, cannot load posts :(")
+  }
 }
+
+export async function getPostFromApi(slug: GetPostBySlugInputDto): Promise<PostApi>{
+  try {
+    const { data } = await axios.get<GetPostBySlugOutputDto>(`${API_URL}/posts/slug/${slug}`)
+    return data.post
+  }catch(err){
+    console.error(err)
+    throw new BadRequestError("Something went wrong, cannot load post :(")
+  }
+}
+
+

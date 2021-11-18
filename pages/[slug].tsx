@@ -8,12 +8,12 @@ import {
   BlogPostDetailsWrapper,
   BlogPostFooter,
 } from "../theme/templates.style"
-import PostType from "../types/post"
-import { getAllPosts, getPostBySlug } from "../lib/api"
+import PostType, { PostApi } from "../types/post"
+import { getAllPosts, getAllPostsFromApi, getPostBySlug, getPostFromApi } from "../lib/api"
 import { Params } from "next/dist/next-server/server/router"
 import markdownToHtml from "../lib/markDownToHtml"
 
-type PostWithMarkdown = PostType & { markdownContent: string }
+type PostWithMarkdown = PostApi & { markdownContent: string }
 
 interface Props {
   post: PostWithMarkdown
@@ -28,8 +28,8 @@ const BlogPostTemplate = ({ post }: Props) => {
       <BlogPostDetailsWrapper>
         <PostDetails
           title={post.title}
-          date={post.date}
-          preview={post.coverImage}
+          date={post.publishedAt}
+          preview={post.img}
           description={post.content}
           markdownContent={post.markdownContent}
         />
@@ -43,15 +43,8 @@ const BlogPostTemplate = ({ post }: Props) => {
 export default BlogPostTemplate
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-    "ogImage",
-    "coverImage",
-  ])
+
+  const post = await getPostFromApi(params.slug)
   const content = await markdownToHtml(post.content || "")
   const markdownContent = post.content
 
@@ -67,7 +60,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"])
+  const posts = await getAllPostsFromApi()
 
   return {
     paths: posts.map((posts) => {

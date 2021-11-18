@@ -2,16 +2,16 @@ import React from "react"
 import Layout from "../components/layout"
 import PersonalBlog from "../containers/HomePage"
 import { getAllPosts, getAllPostsFromApi } from "../lib/api"
-import PostType from "../types/post"
+import  { PostApi } from "../types/post"
 
 type Props = {
-  allPosts: PostType[]
+    allPostsFromApi: PostApi[]
 }
 
-export default function Home({ allPosts }: Props) {
+export default function Home({  allPostsFromApi }: Props) {
   return (
     <Layout>
-      <PersonalBlog posts={allPosts} />
+      <PersonalBlog posts={allPostsFromApi} />
     </Layout>
   )
 }
