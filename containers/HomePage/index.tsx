@@ -2,7 +2,7 @@ import * as React from "react"
 import PersonalBlogWrapper from "./style"
 import Intro from "./Intro"
 import Posts from "./Posts"
-import PostType, { PostApi } from "../../types/post"
+import  { PostApi } from "../../types/post"
 
 type PersonalBlogProps = {
   posts: PostApi[]

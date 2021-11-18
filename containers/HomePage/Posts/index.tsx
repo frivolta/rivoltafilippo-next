@@ -1,6 +1,6 @@
 import * as React from "react"
 import BlogPostsWrapper from "./style"
-import PostType, { PostApi } from "../../../types/post"
+import  { PostApi } from "../../../types/post"
 import PostCard from "../../../components/PostCard/postCard"
 
 type PostsProps = {

@@ -1,5 +1,4 @@
 import React from "react"
-import _ from "lodash"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PostDetails from "../components/PostDetails/postDetails"
@@ -8,8 +7,8 @@ import {
   BlogPostDetailsWrapper,
   BlogPostFooter,
 } from "../theme/templates.style"
-import PostType, { PostApi } from "../types/post"
-import { getAllPosts, getAllPostsFromApi, getPostBySlug, getPostFromApi } from "../lib/api"
+import  { PostApi } from "../types/post"
+import {  getAllPostsFromApi, getPostFromApi } from "../lib/api"
 import { Params } from "next/dist/next-server/server/router"
 import markdownToHtml from "../lib/markDownToHtml"
 
@@ -17,7 +16,7 @@ type PostWithMarkdown = PostApi & { markdownContent: string }
 
 interface Props {
   post: PostWithMarkdown
-  morePosts: PostType[]
+  morePosts: PostApi[]
   preview?: boolean
 }
 
