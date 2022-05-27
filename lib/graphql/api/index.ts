@@ -2,7 +2,7 @@ import { gql } from "graphql-request"
 
 export const GET_ALL_POSTS = gql`
 { 
-  posts(orderBy: publishedAt_ASC) {
+  posts(orderBy: date_DESC) {
       id
       author{
         name
