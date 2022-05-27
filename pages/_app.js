@@ -5,8 +5,9 @@ import { theme } from "../theme"
 import ResetCss from "../components/resetCSS"
 import Head from "next/head"
 import { site } from "../config"
+import { GraphQLClient } from "graphql-request"
 
-
+export const graphcms = new GraphQLClient("https://api-eu-central-1.graphcms.com/v2/cl3lemw3vbov001xp14d204mt/master")
 
 function MyApp({ Component, pageProps }) {
   return (

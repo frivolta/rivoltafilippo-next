@@ -1,33 +1,24 @@
 import React from "react"
 import Layout from "../components/layout"
 import PersonalBlog from "../containers/HomePage"
-import { getAllPosts, getAllPostsFromApi } from "../lib/api"
-import  { PostApi } from "../types/post"
+import { GetAllPosts, GraphPost } from "../types/post"
+import { graphcms } from "./_app"
+import { GET_ALL_POSTS } from "../lib/graphql/api"
 
-type Props = {
-    allPostsFromApi: PostApi[]
+interface Props  {
+  posts: GraphPost[]
 }
 
-export default function Home({  allPostsFromApi }: Props) {
+export default function Home({ posts }: Props) {
+  console.log(posts)
   return (
     <Layout>
-      <PersonalBlog posts={allPostsFromApi} />
+      <PersonalBlog posts={posts} />
     </Layout>
   )
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-  ])
-  const allPostsFromApi = await getAllPostsFromApi()
-
-  return {
-    props: { allPosts, allPostsFromApi },
-  }
+  const {posts} = await graphcms.request<GetAllPosts>(GET_ALL_POSTS)
+  return {props: { posts }}
 }

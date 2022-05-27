@@ -11,9 +11,10 @@ import {
 } from "./postCard.style"
 import Link from "next/link"
 import Image from "next/image"
+import { CoverImage } from "../../types/coverImage"
 
 interface PostCardProps {
-  image: string
+  image: CoverImage
   title: string
   excerpt?: string
   url: string
@@ -50,7 +51,7 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
       <Link href={url}>
         <PostPreview className="post_preview">
           <Image
-            src={image}
+            src={image.url}
             alt="post preview"
             layout="responsive"
             width={1170}

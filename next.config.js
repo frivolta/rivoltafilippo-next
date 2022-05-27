@@ -3,7 +3,7 @@ const withPWA = require("next-pwa");
 // next.config.js
 module.exports = withPWA({
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'media.graphassets.com'],
   },
   pwa: {
     dest: "public",

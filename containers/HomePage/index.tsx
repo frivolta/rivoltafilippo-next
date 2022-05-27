@@ -2,10 +2,10 @@ import * as React from "react"
 import PersonalBlogWrapper from "./style"
 import Intro from "./Intro"
 import Posts from "./Posts"
-import  { PostApi } from "../../types/post"
+import { GraphPost } from "../../types/post"
 
-type PersonalBlogProps = {
-  posts: PostApi[]
+interface PersonalBlogProps {
+  posts: GraphPost[]
 }
 
 const PersonalBlog: React.FunctionComponent<PersonalBlogProps> = ({

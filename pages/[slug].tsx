@@ -7,12 +7,13 @@ import {
   BlogPostDetailsWrapper,
   BlogPostFooter,
 } from "../theme/templates.style"
-import  { PostApi } from "../types/post"
-import {  getAllPostsFromApi, getPostFromApi } from "../lib/api"
+import {  GetAllSlugs, GetPostBySlug, GraphPost, PostApi } from "../types/post"
 import { Params } from "next/dist/next-server/server/router"
 import markdownToHtml from "../lib/markDownToHtml"
+import { graphcms } from "./_app"
+import { GET_ALL_SLUGS, GET_POST_BY_SLUG } from "../lib/graphql/api"
 
-type PostWithMarkdown = PostApi & { markdownContent: string }
+type PostWithMarkdown = GraphPost & { markdownContent: string }
 
 interface Props {
   post: PostWithMarkdown
@@ -27,8 +28,8 @@ const BlogPostTemplate = ({ post }: Props) => {
       <BlogPostDetailsWrapper>
         <PostDetails
           title={post.title}
-          date={post.publishedAt}
-          preview={post.img}
+          date={post.date}
+          preview={post.coverImage.url}
           description={post.content}
           markdownContent={post.markdownContent}
         />
@@ -42,30 +43,28 @@ const BlogPostTemplate = ({ post }: Props) => {
 export default BlogPostTemplate
 
 export async function getStaticProps({ params }: Params) {
-
-  const post = await getPostFromApi(params.slug)
+  const { post } = await graphcms.request<GetPostBySlug, { slug: string }>(GET_POST_BY_SLUG, { slug: params.slug })
   const content = await markdownToHtml(post.content || "")
   const markdownContent = post.content
-
   return {
     props: {
       post: {
         ...post,
         content,
-        markdownContent,
+        markdownContent
       },
     },
   }
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPostsFromApi()
+  const {posts} = await graphcms.request<GetAllSlugs>(GET_ALL_SLUGS)
 
   return {
-    paths: posts.map((posts) => {
+    paths: posts.map((post) => {
       return {
         params: {
-          slug: posts.slug,
+          slug: post.slug,
         },
       }
     }),

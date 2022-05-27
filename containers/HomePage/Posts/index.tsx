@@ -1,10 +1,10 @@
 import * as React from "react"
 import BlogPostsWrapper from "./style"
-import  { PostApi } from "../../../types/post"
+import {  GraphPost } from "../../../types/post"
 import PostCard from "../../../components/PostCard/postCard"
 
-type PostsProps = {
-  posts: PostApi[]
+interface PostsProps {
+  posts: GraphPost[]
 }
 
 const Posts: React.FunctionComponent<PostsProps> = ({ posts }) => {
@@ -15,10 +15,10 @@ const Posts: React.FunctionComponent<PostsProps> = ({ posts }) => {
           <PostCard
             key={post.slug}
             title={post.title}
-            image={post.img}
+            image={post.coverImage}
             url={post.slug}
             excerpt={post.excerpt}
-            date={post.publishedAt}
+            date={post.date}
           />
         )
       })}

@@ -1,4 +1,5 @@
 import Author from "./author"
+import { CoverImage } from "./coverImage"
 // @ToDo Remove PostType
 type PostType = {
   slug: string
@@ -13,6 +14,22 @@ type PostType = {
   content: string
 }
 
+export type GraphPost = {
+  __typeName: GraphPost;
+  title: string;
+  mediumUrl: string;
+  redditUrl: string;
+  coverImage: CoverImage;
+  date: string;
+  slug: string;
+  content:string;
+  excerpt: string;
+  author: Author;
+}
+
+export type GetAllPosts =  {posts: Omit<GraphPost, "content">[]}
+export type GetAllSlugs = {posts: Pick<GraphPost, "slug">[]}
+export type GetPostBySlug = {post: Omit<GraphPost, "excerpt">}
 export type PostApi = {
   id: number;
   createdAt: Date;
