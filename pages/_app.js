@@ -6,18 +6,26 @@ import ResetCss from "../components/resetCSS"
 import Head from "next/head"
 import { site } from "../config"
 import { GraphQLClient } from "graphql-request"
-import { Analytics } from '@vercel/analytics/react';
 
 export const graphcms = new GraphQLClient("https://api-eu-central-1.graphcms.com/v2/cl3lemw3vbov001xp14d204mt/master")
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Analytics />
       <ThemeProvider theme={theme}>
       <Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZD0FG8FEB"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DZD0FG8FEB');
+          `
+          }}
+        />
         <title>{site.siteMetadata.title}</title>
-
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta property="og:title" content={site.siteMetadata.title} />
         <meta property="og:description" content={site.siteMetadata.description} />
