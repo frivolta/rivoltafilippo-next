@@ -4,7 +4,7 @@ excerpt: "When I started my journey into functional programming I found myself t
 coverImage: "/images/blog/function-composition-with-pipe-and-compose.jpg"
 date: "2021-10-11"
 author:
-  name: JJ Kasper
+  name: Filippo Rivolta
   picture: "/assets/blog/authors/jj.jpeg"
 ogImage:
   url: "/assets/blog/dynamic-routing/cover.jpg"

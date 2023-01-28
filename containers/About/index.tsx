@@ -1,7 +1,6 @@
 import * as React from "react"
 import {
-  IoLogoInstagram,
-  IoLogoLinkedin,
+
   IoIosDownload,
   IoIosAt,
 } from "react-icons/io"
@@ -9,27 +8,13 @@ import {
   AboutWrapper,
   AboutPageTitle,
   AboutDetails,
-  SocialProfiles,
 } from "./style"
 import Button from "../../components/Button/button"
-import SocialProfile from "../../components/SocialProfile/socialProfile"
 
-const SocialLinks = [
-  {
-    icon: <IoLogoInstagram />,
-    url: "https://www.instagram.com/filippo.jsx/",
-    tooltip: "Instagram",
-  },
-  {
-    icon: <IoLogoLinkedin />,
-    url: "https://www.linkedin.com/in/filippo-rivolta-49b9723b/",
-    tooltip: "Linkedin",
-  },
-]
 interface AboutProps {}
 
 const About: React.FunctionComponent<AboutProps> = () => {
-  const downloadLinkUrl = "/downloads/filippo-rivolta-cv-en.pdf"
+  const downloadLinkUrl = "/downloads/filippo-rivolta-cv-2023.pdf"
 
   return (
     <AboutWrapper>
@@ -42,25 +27,22 @@ const About: React.FunctionComponent<AboutProps> = () => {
           </h2>
         </AboutPageTitle>
         <p>
-          Hi, I am a highly motivated <b>Front-end developer</b> and{" "}
-          <b>Ui Designer</b>
-          crafting rich User Experiences with minimal and aesthetically pleasing
-          interfaces located in <b>Milan, Italy</b>. I have experiece in
-          developing websites and web applications based on web standards
-          technologies like HTML, CSS, <b>JavaScript</b> and PHP. I am
-          passionate about web development with a special affinity for{" "}
-          <b>client-side technologies</b>. The web is my life, exploring web
-          technologies and techniques, developing cool web apps, for this
-          reason, I think working in a team is one of the best ways to improve.
-          Anything that can help me expand my knowledge is always welcome. I
-          love spending time on f<b>ixing little details</b> and optimizing web
-          apps. After hours I am a geek, a wakeboarder / snowboarder, also I
-          love to cook and I admire great food.
+          Hey there! I am a <b>highly motivated</b> and experienced <b>Front-end Developer</b> with a proven track record of creating exceptional user experiences. I currently work at the <b>London
+          Stock Exchange Group</b>, where I lead the development and implementation of a cloud-based trading platform. I have a passion for <b>Full-stack
+          development</b>, this allows me to provide valuable contributions to both front-end and back-end projects. My background in <b>UI
+          design</b> gives me a unique perspective and design-minded approach to my development work. I am a<b> team
+          player</b> and take pride in <b>leading projects</b> and <b>mentoring</b> other developers to achieve success.
+          I have a strong background in various programming languages, including <i>JavaScript, TypeScript, HTML/CSS,
+          Java, Golang, SQL, and PHP</i>. This allows me to approach projects with a versatile skill set, and to <b>easily
+          adapt to new technologies</b>.
+          <br/><br/>
+          I am always seeking new opportunities to expand my knowledge and skills, and I am excited to join a team of motivated and passionate individuals. As a social and outgoing person, I thrive in collaborative environments and enjoy working closely with others to achieve common goals. In my free time, I love to stay active and enjoy outdoor activities such as wakeboarding and snowboarding, as well as experimenting in the kitchen with new recipes. I am excited to bring my skills and passion to a new team and contribute to the success of the company."
         </p>
         <h3>
           For more info contact me or download my cv following the links below!
         </h3>
         <br />
+        <div style={{display:"flex"}}>
         <a href={downloadLinkUrl} target="_blank">
           <Button
             className="no-space"
@@ -71,7 +53,7 @@ const About: React.FunctionComponent<AboutProps> = () => {
           />
         </a>
         <br />
-        <a href="mailto:info@filipporivolta.it">
+        <a href="mailto:rivoltafilippo@gmail.com">
           <Button
             title="Contact me"
             type="button"
@@ -79,9 +61,7 @@ const About: React.FunctionComponent<AboutProps> = () => {
             icon={<IoIosAt />}
           />
         </a>
-        <SocialProfiles>
-          <SocialProfile items={SocialLinks} />
-        </SocialProfiles>
+        </div>
       </AboutDetails>
     </AboutWrapper>
   )
