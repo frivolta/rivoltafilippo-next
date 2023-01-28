@@ -6,12 +6,15 @@ import ResetCss from "../components/resetCSS"
 import Head from "next/head"
 import { site } from "../config"
 import { GraphQLClient } from "graphql-request"
+import { Analytics } from '@vercel/analytics/react';
 
 export const graphcms = new GraphQLClient("https://api-eu-central-1.graphcms.com/v2/cl3lemw3vbov001xp14d204mt/master")
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <Analytics />
+      <ThemeProvider theme={theme}>
       <Head>
         <title>{site.siteMetadata.title}</title>
 
@@ -38,6 +41,7 @@ function MyApp({ Component, pageProps }) {
       <ResetCss />
       <Component {...pageProps} />
     </ThemeProvider>
+      </>
   )
 }
 

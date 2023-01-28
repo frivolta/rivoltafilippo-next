@@ -1435,6 +1435,11 @@
   resolved "https://registry.yarnpkg.com/@types/url-join/-/url-join-4.0.0.tgz#72eff71648a429c7d4acf94e03780e06671369bd"
   integrity sha512-awrJu8yML4E/xTwr2EMatC+HBnHGoDxc2+ImA9QyeUELI1S7dOCIZcyjki1rkwoA8P2D2NVgLAJLjnclkdLtAw==
 
+"@vercel/analytics@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-0.1.8.tgz#71f1f8c7bb98ac0c5c47eb3fb8ccbe8141b9fe47"
+  integrity sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==
+
 ajv-keywords@^3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
