@@ -17,8 +17,13 @@ export default function Home({ posts }: Props) {
     </Layout>
   )
 }
-
+/*
 export const getStaticProps = async () => {
   const {posts} = await graphcms.request<GetAllPosts>(GET_ALL_POSTS)
+  return {props: { posts }}
+}
+*/
+export const getStaticProps = async () => {
+  const posts:any = []
   return {props: { posts }}
 }
