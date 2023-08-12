@@ -7,7 +7,7 @@ import {
   BlogPostDetailsWrapper,
   BlogPostFooter,
 } from "../theme/templates.style"
-import {  GetAllSlugs, GetPostBySlug, GraphPost, PostApi } from "../types/post"
+import { GetAllSlugs, GetPostBySlug, GraphPost, PostApi } from "../types/post"
 import { Params } from "next/dist/next-server/server/router"
 import markdownToHtml from "../lib/markDownToHtml"
 import { graphcms } from "./_app"
@@ -43,25 +43,28 @@ const BlogPostTemplate = ({ post }: Props) => {
 export default BlogPostTemplate
 
 export async function getStaticProps({ params }: Params) {
-  const { post } = await graphcms.request<GetPostBySlug, { slug: string }>(GET_POST_BY_SLUG, { slug: params.slug })
-  const content = await markdownToHtml(post.content || "")
-  const markdownContent = post.content
+  const { blogPost } = await graphcms.request<GetPostBySlug, { slug: string }>(
+    GET_POST_BY_SLUG,
+    { slug: params.slug }
+  )
+  const content = await markdownToHtml(blogPost.content || "")
+  const markdownContent = blogPost.content
   return {
     props: {
       post: {
-        ...post,
+        ...blogPost,
         content,
-        markdownContent
+        markdownContent,
       },
     },
   }
 }
 
 export async function getStaticPaths() {
-  const {posts} = await graphcms.request<GetAllSlugs>(GET_ALL_SLUGS)
+  const { blogPosts } = await graphcms.request<GetAllSlugs>(GET_ALL_SLUGS)
 
   return {
-    paths: posts.map((post) => {
+    paths: blogPosts.map((post) => {
       return {
         params: {
           slug: post.slug,

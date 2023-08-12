@@ -1,12 +1,9 @@
 import { gql } from "graphql-request"
 
 export const GET_ALL_POSTS = gql`
-{ 
-  posts(orderBy: date_DESC) {
+  {
+    blogPosts(orderBy: date_DESC, where: {}) {
       id
-      author{
-        name
-      }
       date
       slug
       title
@@ -15,25 +12,33 @@ export const GET_ALL_POSTS = gql`
         url
       }
       excerpt
+      author {
+        ... on Author {
+          id
+          name
+        }
+      }
     }
-}
+  }
 `
 
 export const GET_ALL_SLUGS = gql`
-query getAllBySlugs{ 
-  posts(orderBy: publishedAt_ASC) {
+  query getAllBySlugs {
+    blogPosts(orderBy: publishedAt_ASC) {
       slug
     }
-}
+  }
 `
 
 export const GET_POST_BY_SLUG = gql`
- query getPostBySlug($slug: String!) {
-      post(where: {slug: $slug}
-  ) {
+  query getPostBySlug($slug: String!) {
+    blogPost(where: { slug: $slug }) {
       id
-      author{
-        name
+      author {
+        ... on Author {
+          id
+          name
+        }
       }
       date
       slug
@@ -44,5 +49,5 @@ export const GET_POST_BY_SLUG = gql`
         url
       }
     }
-    }
- `
+  }
+`

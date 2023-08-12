@@ -66,6 +66,14 @@ export const IntroTitle = styled.h1`
   }
 `
 
+export const IntroButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.4rem;
+  flex-direction: column;
+`
+
 export const Desciption = styled.p`
   color: ${themeGet("colors.textColor", "#292929")};
   font-size: ${themeGet("fontSizes.3", "15")}px;

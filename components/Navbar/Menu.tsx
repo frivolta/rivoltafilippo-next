@@ -3,7 +3,7 @@ import { MenuItemWrapper, MenuItem } from "./navbar.style"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import Button from "../Button/button"
-import { AiOutlineUser } from "react-icons/ai"
+import { AiFillFire, AiOutlineUser } from "react-icons/ai"
 
 type MenuProps = {
   items: MenuItemsProps[]
@@ -43,6 +43,13 @@ const Menu: React.FunctionComponent<MenuProps> = ({
           )}
         </MenuItem>
       ))}
+      <a href="https://fantasia.rivoltafilippo.com" target="_blank">
+        <Button
+          title="Fantasia, My Pet Project "
+          icon={<AiFillFire />}
+          iconPosition="left"
+        />
+      </a>
       <a href="/downloads/filippo-rivolta-cv-2023.pdf" target="_blank">
         <Button
           title="Curriculum PDF "

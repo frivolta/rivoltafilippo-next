@@ -26,7 +26,6 @@ const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
     e.preventDefault()
     setSuccess(undefined)
     setError(undefined)
-    console.log("Adding to newsletter")
   }
   return (
     <NewsletterWrapper {...props}>

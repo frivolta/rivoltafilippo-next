@@ -5,12 +5,11 @@ import { GetAllPosts, GraphPost } from "../types/post"
 import { graphcms } from "./_app"
 import { GET_ALL_POSTS } from "../lib/graphql/api"
 
-interface Props  {
+interface Props {
   posts: GraphPost[]
 }
 
 export default function Home({ posts }: Props) {
-  console.log(posts)
   return (
     <Layout>
       <PersonalBlog posts={posts} />
@@ -24,6 +23,6 @@ export const getStaticProps = async () => {
 }
 */
 export const getStaticProps = async () => {
-  const posts:any = []
-  return {props: { posts }}
+  const { blogPosts } = await graphcms.request<GetAllPosts>(GET_ALL_POSTS)
+  return { props: { posts: blogPosts } }
 }

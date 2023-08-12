@@ -1,9 +1,16 @@
 import React from "react"
-import { IntroWrapper, IntroImage, IntroTitle, Desciption } from "./style"
+import {
+  IntroWrapper,
+  IntroImage,
+  IntroTitle,
+  Desciption,
+  IntroButtons,
+} from "./style"
 import { IoLogoLinkedin } from "react-icons/io"
 import Button from "../../../components/Button/button"
 import SocialProfile from "../../../components/SocialProfile/socialProfile"
 import Image from "next/image"
+import { AiFillFire, AiOutlineUser } from "react-icons/ai"
 
 type IntroProps = {}
 
@@ -28,12 +35,32 @@ const Intro: React.FunctionComponent<IntroProps> = () => {
         and Ui Designer.
       </IntroTitle>
       <Desciption>
-       Hi, I am a <b>Front-end developer</b> creating <b>accessible</b> and <b>user-centric interfaces</b>. I am a <b>Full-stack development</b> passionate, this enables me to provide valuable contributions to both front-end and back-end projects. My background in UI design allows me to bring a unique perspective and design-minded approach to my development work, resulting in exceptional user experiences. As a <b>team player</b>, I take pride in <b>mentoring</b> other developers to achieve project success.
+        Hi, I am a <b>Front-end developer</b> creating <b>accessible</b> and{" "}
+        <b>user-centric interfaces</b>. I am a <b>Full-stack development</b>{" "}
+        passionate, this enables me to provide valuable contributions to both
+        front-end and back-end projects. My background in UI design allows me to
+        bring a unique perspective and design-minded approach to my development
+        work, resulting in exceptional user experiences. As a <b>team player</b>
+        , I take pride in <b>mentoring</b> other developers to achieve project
+        success.
       </Desciption>
       <Desciption>
-        <a href="/downloads/filippo-rivolta-cv-2023.pdf" target="_blank">
-          <Button title="Download CV " className="no-space margin-top" />
-        </a>
+        <IntroButtons>
+          <a href="https://fantasia.rivoltafilippo.com" target="_blank">
+            <Button
+              title="Fantasia, My Pet Project "
+              icon={<AiFillFire />}
+              iconPosition="left"
+            />
+          </a>
+          <a href="/downloads/filippo-rivolta-cv-2023.pdf" target="_blank">
+            <Button
+              title="Curriculum PDF "
+              icon={<AiOutlineUser />}
+              iconPosition="left"
+            />
+          </a>
+        </IntroButtons>
       </Desciption>
       <SocialProfile items={SocialLinks} />
     </IntroWrapper>
