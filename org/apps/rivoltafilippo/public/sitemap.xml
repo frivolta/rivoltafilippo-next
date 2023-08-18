@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://rivoltafilippo.com</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/about</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/project-budgety</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/why-you-should-use-generic-types-in-typescript-a-simple-example</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/write-better-javascript-function-composition-with-pipe-and-compose</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/javascript-merge-arrays-without-duplicates</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/typing-react-context-to-avoid-an-undefined-default-value</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/a-fast-react-boilerplate-and-toolkit-focusing-on-cutting-edge-technologies-and-tools</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/write-better-react-compose-multiple-functional-hocs-higher-order-components </loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/function-composition-in-large-react-applications-best-practices-and-real-world-examples</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+<url><loc>https://rivoltafilippo.com/additional-page</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2023-01-28T23:56:00.873Z</lastmod></url>
+</urlset>
