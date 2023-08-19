@@ -1,6 +1,6 @@
 import * as React from "react"
 import BlogPostsWrapper from "./style"
-import {  GraphPost } from "../../../types/post"
+import {  GraphPost } from "../../../../types/post"
 import PostCard from "../../../components/PostCard/postCard"
 
 interface PostsProps {

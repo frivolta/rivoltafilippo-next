@@ -9,7 +9,7 @@ type InputProps = {
   style?: React.CSSProperties
   containerStyle?: React.CSSProperties
   className?: string
-  secondaryComponent?: React.ReactChild | React.ReactChildren // this prop only for number field
+  secondaryComponent?: any;
   name?: string
   placeholder?: string
   value?: string

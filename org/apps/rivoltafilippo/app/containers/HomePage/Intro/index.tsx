@@ -28,7 +28,7 @@ const Intro: React.FunctionComponent<IntroProps> = () => {
   return (
     <IntroWrapper>
       <IntroImage>
-        <Image src={AuthorImage} alt="author" width="210px" height="210px" />
+        <Image src={AuthorImage} alt="author" width={210} height={210}/>
       </IntroImage>
       <IntroTitle>
         Front-end Lead <b>developer </b>

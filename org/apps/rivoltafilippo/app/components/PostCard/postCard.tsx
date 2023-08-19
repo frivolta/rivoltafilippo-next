@@ -11,7 +11,7 @@ import {
 } from "./postCard.style"
 import Link from "next/link"
 import Image from "next/image"
-import { CoverImage } from "../../types/coverImage"
+import { CoverImage } from "../../../types/coverImage"
 
 interface PostCardProps {
   image: CoverImage

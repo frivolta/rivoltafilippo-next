@@ -2,7 +2,7 @@ import * as React from "react"
 import PersonalBlogWrapper from "./style"
 import Intro from "./Intro"
 import Posts from "./Posts"
-import { GraphPost } from "../../types/post"
+import { GraphPost } from "../../../types/post"
 
 interface PersonalBlogProps {
   posts: GraphPost[]

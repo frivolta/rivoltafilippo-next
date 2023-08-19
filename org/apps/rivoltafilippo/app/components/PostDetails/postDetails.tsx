@@ -104,24 +104,7 @@ const PostDetails: React.FunctionComponent<PostDetailsProps> = ({
           ""
         )}
         <PostDescription className="post_des">
-          <ReactMarkdown
-            source={markdownContent}
-            renderers={{
-              code: CodeBlock,
-              link: (props: LinkProps) => {
-                return (
-                  <a
-                    href={props.href}
-                    target="_blank"
-                    rel="nofollow noreferrer noopener"
-                  >
-                    {props.children}
-                  </a>
-                )
-              },
-            }}
-            escapeHtml={false}
-          />
+          <ReactMarkdown>{markdownContent}</ReactMarkdown>
         </PostDescription>
       </PostDescriptionWrapper>
     </PostDetailsWrapper>
