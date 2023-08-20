@@ -1,9 +1,14 @@
 import './global.css';
 import { StyledComponentsRegistry } from './registry';
 import {site} from './config'
+import { GraphQLClient } from 'graphql-request';
 export const metadata = {
 ...site.siteMetadata
 };
+
+export const graphcms = new GraphQLClient(
+  "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cll67qzsz10ad01uoff4f01vj/master"
+)
 
 export default function RootLayout({
   children,
@@ -12,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
       <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-DZD0FG8FEB"
@@ -26,21 +32,7 @@ export default function RootLayout({
           `,
             }}
           />
-          <title>{site.siteMetadata.title}</title>
-          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta property="og:title" content={site.siteMetadata.title} />
-          <meta
-            property="og:description"
-            content={site.siteMetadata.description}
-          />
-          <meta property="og:url" content={site.siteMetadata.siteUrl} />
-          <meta name="description" content={site.siteMetadata.description} />
-          <meta property="og:type" content="website" />
           <link rel="shortcut icon" href="/favicon-32x32.png" />
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
@@ -56,7 +48,7 @@ export default function RootLayout({
           />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png"></link>
-          <meta name="theme-color" content="#fff" />
+      </head>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
