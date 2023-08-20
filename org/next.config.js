@@ -12,7 +12,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-
+  images: {
+    domains: ['res.cloudinary.com', 'media.graphassets.com'],
+  },
   compiler: {
     // For other options, see https://styled-components.com/docs/tooling#babel-plugin
     styledComponents: true,
