@@ -10,7 +10,7 @@ import {
   PostContent,
 } from "./postCard.style"
 import Link from "next/link"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { CoverImage } from "../../types/coverImage"
 
 interface PostCardProps {

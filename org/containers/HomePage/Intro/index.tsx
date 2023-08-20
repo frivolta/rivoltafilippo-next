@@ -9,7 +9,7 @@ import {
 import { IoLogoLinkedin } from 'react-icons/io';
 import Button from '../../../components/Button/button';
 import SocialProfile from '../../../components/SocialProfile/socialProfile';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { AiFillFire, AiOutlineUser } from 'react-icons/ai';
 
 type IntroProps = {};
