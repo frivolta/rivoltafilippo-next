@@ -9,7 +9,7 @@ import {
 import { IoLogoLinkedin } from 'react-icons/io';
 import Button from '../../../components/Button/button';
 import SocialProfile from '../../../components/SocialProfile/socialProfile';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { AiFillFire, AiOutlineUser } from 'react-icons/ai';
 
 type IntroProps = {};
@@ -28,7 +28,15 @@ const Intro: React.FunctionComponent<IntroProps> = () => {
   return (
     <IntroWrapper>
       <IntroImage>
-        <Image src={AuthorImage} alt="author" width={210} height={210} />
+        <Image
+          src={AuthorImage}
+          alt="author"
+          width={210}
+          height={210}
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       </IntroImage>
       <IntroTitle>
         Front-end Lead <b>developer </b>

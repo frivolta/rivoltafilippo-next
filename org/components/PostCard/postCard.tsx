@@ -10,7 +10,7 @@ import {
   PostContent,
 } from "./postCard.style"
 import Link from "next/link"
-import Image from "next/legacy/image"
+import Image from "next/image"
 import { CoverImage } from "../../types/coverImage"
 
 interface PostCardProps {
@@ -53,10 +53,13 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
           <Image
             src={image?.url ?? "/images/placeholder.png"}
             alt="post preview"
-            layout="responsive"
             width={1170}
             height={500}
-          />
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto"
+            }} />
         </PostPreview>
       </Link>
 
@@ -84,7 +87,7 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
         </PostContent>
       </PostDetails>
     </PostCardWrapper>
-  )
+  );
 }
 
 export default PostCard
