@@ -1,12 +1,10 @@
+import Footer from 'components/Footer/Footer';
 import Navbar from 'components/Navbar/Navbar';
+import Newsletter from 'components/Newsletter/Newsletter';
 import React from 'react';
 import Sticky from 'react-stickynode';
-//import Sticky from 'react-stickynode';
-//import ScrollToTop from 'react-scroll-up';
-//import Navbar from './Navbar/Navbar';
-//import Newsletter from './Newsletter/Newsletter';
-//import Footer from './Footer/Footer';
-//import ScrollUpButton from './ScrollUpButton/ScrollUpButton';
+import ScrollToTop from 'react-scroll-up';
+import ScrollUpButton from 'components/ScrollUpButton/ScrollUpButton';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -21,7 +19,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
 
       {children}
 
-      {/* <Newsletter />
+      <Newsletter />
       <Footer>
         Copyright &copy; {new Date().getFullYear()}
         <a href="https://www.rivoltafilippo.com/"> Filippo Rivolta.</a>
@@ -34,7 +32,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
       >
         <ScrollUpButton />
       </ScrollToTop>
-*/}
     </>
   );
 };
