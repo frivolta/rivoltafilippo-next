@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react';
 import {
   MobileMenuWrapper,
   DrawerContentWrapper,
@@ -6,31 +6,31 @@ import {
   DrawerLogo,
   DrawerClose,
   HamburgerIcon,
-} from "./navbar.style"
-import { FiX } from "react-icons/fi"
-import Drawer from "../Drawer/drawer"
-import { DrawerContext } from "../Drawer/drawerContext"
-import Link from "next/link"
-import Menu from "./Menu"
+} from './navbar.style';
+import { FiX } from 'react-icons/fi';
+import Drawer from '../Drawer/drawer';
+import { DrawerContext } from '../Drawer/drawerContext';
+import Link from 'next/link';
+import Menu from './Menu';
 
 type MobileMenuProps = {
-  items: any
-  logo: string
-}
+  items: any;
+  logo: string;
+};
 
 const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
   items,
   logo,
   ...props
 }) => {
-  const { state, dispatch }: any = useContext(DrawerContext)
+  const { state, dispatch }: any = useContext(DrawerContext);
 
   // Toggle drawer
   const toggleDrawer = () => {
     dispatch({
-      type: "TOGGLE",
-    })
-  }
+      type: 'TOGGLE',
+    });
+  };
 
   return (
     <MobileMenuWrapper {...props}>
@@ -62,7 +62,7 @@ const MobileMenu: React.FunctionComponent<MobileMenuProps> = ({
         </DrawerContentWrapper>
       </Drawer>
     </MobileMenuWrapper>
-  )
-}
+  );
+};
 
-export default MobileMenu
+export default MobileMenu;

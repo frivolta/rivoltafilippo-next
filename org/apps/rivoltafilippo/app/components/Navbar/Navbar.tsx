@@ -1,42 +1,46 @@
-import React from "react"
+import React from 'react';
 
-import HeaderWrapper, { NavbarWrapper, Logo, MenuWrapper } from "./navbar.style"
-import { DrawerProvider } from "../Drawer/drawerContext"
-import MobileMenu from "./MobileMenu"
-import Menu from "./Menu"
+import HeaderWrapper, {
+  NavbarWrapper,
+  Logo,
+  MenuWrapper,
+} from './navbar.style';
+import { DrawerProvider } from '../Drawer/drawerContext';
+import MobileMenu from './MobileMenu';
+import Menu from './Menu';
 
 type NavbarProps = {
-  className?: string
-}
+  className?: string;
+};
 
 const MenuItems = [
   {
-    label: "Home",
-    url: "/",
+    label: 'Home',
+    url: '/',
   },
   {
-    label: "About",
-    url: "/about",
+    label: 'About',
+    url: '/about',
   },
-]
+];
 
 const Navbar: React.FunctionComponent<NavbarProps> = ({
   className,
   ...props
 }) => {
   // Add all classs to an array
-  const addAllClasses = ["header"]
+  const addAllClasses = ['header'];
 
   // Load logo image path
-  const LogoImage = "/images/logo-servo-white.svg"
+  const LogoImage = '/images/logo-servo-white.svg';
 
   // className prop checking
   if (className) {
-    addAllClasses.push(className)
+    addAllClasses.push(className);
   }
 
   return (
-    <HeaderWrapper className={addAllClasses.join(" ")} {...props}>
+    <HeaderWrapper className={addAllClasses.join(' ')} {...props}>
       <NavbarWrapper className="navbar">
         <DrawerProvider>
           <MobileMenu items={MenuItems} logo={LogoImage} />
@@ -71,7 +75,7 @@ const Navbar: React.FunctionComponent<NavbarProps> = ({
         </NavSearchFromWrapper>
   </NavSearchWrapper>*/}
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

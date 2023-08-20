@@ -1,14 +1,15 @@
-import React from "react"
-import Sticky from "react-stickynode"
-import ScrollToTop from "react-scroll-up"
-import Navbar from "./Navbar/Navbar"
-import Newsletter from "./Newsletter/Newsletter"
-import Footer from "./Footer/Footer"
-import ScrollUpButton from "./ScrollUpButton/ScrollUpButton"
+'use client';
+import React from 'react';
+import Sticky from 'react-stickynode';
+import ScrollToTop from 'react-scroll-up';
+import Navbar from './Navbar/Navbar';
+import Newsletter from './Newsletter/Newsletter';
+import Footer from './Footer/Footer';
+import ScrollUpButton from './ScrollUpButton/ScrollUpButton';
 
 type LayoutProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
   return (
@@ -33,7 +34,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         <ScrollUpButton />
       </ScrollToTop>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

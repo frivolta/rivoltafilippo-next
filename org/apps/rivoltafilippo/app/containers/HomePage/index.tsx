@@ -5,7 +5,7 @@ import Posts from "./Posts"
 import { GraphPost } from "../../../types/post"
 
 interface PersonalBlogProps {
-  posts: GraphPost[]
+  posts: any // GraphPost[]
 }
 
 const PersonalBlog: React.FunctionComponent<PersonalBlogProps> = ({
