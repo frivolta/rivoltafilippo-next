@@ -51,7 +51,7 @@ const PostCard: React.FunctionComponent<PostCardProps> = ({
       <Link href={url}>
         <PostPreview className="post_preview">
           <Image
-            src={image.url}
+            src={image?.url ?? "/images/placeholder.png"}
             alt="post preview"
             layout="responsive"
             width={1170}

@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
             }}
           />
           <title>{site.siteMetadata.title}</title>
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta property="og:title" content={site.siteMetadata.title} />
           <meta
             property="og:description"
