@@ -1,18 +1,18 @@
-import React, { Fragment } from "react"
-import RcDrawer from "rc-drawer"
-import "rc-drawer/assets/index.css"
+import React, { Fragment } from 'react';
+import RcDrawer from 'rc-drawer';
+import 'rc-drawer/assets/index.css';
 
 type DrawerProps = {
-  className?: string
-  children?: any
-  closeButton?: any
-  closeButtonStyle?: any
-  drawerHandler: any
-  toggleHandler: any
-  open: any
-  width?: string
-  placement?: "left" | "right" | "top" | "bottom"
-}
+  className?: string;
+  children?: any;
+  closeButton?: any;
+  closeButtonStyle?: any;
+  drawerHandler: any;
+  toggleHandler: any;
+  open: any;
+  width?: string;
+  placement?: 'left' | 'right' | 'top' | 'bottom';
+};
 
 const Drawer: React.FunctionComponent<DrawerProps> = ({
   className,
@@ -22,16 +22,16 @@ const Drawer: React.FunctionComponent<DrawerProps> = ({
   drawerHandler,
   toggleHandler,
   open,
-  width,
-  placement,
+  width = '300px',
+  placement = 'left',
   ...props
 }) => {
   // Add all classs to an array
-  const addAllClasses = ["drawer"]
+  const addAllClasses = ['drawer'];
 
   // className prop checking
   if (className) {
-    addAllClasses.push(className)
+    addAllClasses.push(className);
   }
 
   return (
@@ -39,7 +39,7 @@ const Drawer: React.FunctionComponent<DrawerProps> = ({
       <RcDrawer
         open={open}
         onClose={toggleHandler}
-        className={addAllClasses.join(" ")}
+        className={addAllClasses.join(' ')}
         width={width}
         placement={placement}
         {...props}
@@ -58,18 +58,13 @@ const Drawer: React.FunctionComponent<DrawerProps> = ({
       </RcDrawer>
       <div
         className="drawer__handler"
-        style={{ display: "inline-block" }}
+        style={{ display: 'inline-block' }}
         onClick={toggleHandler}
       >
         {drawerHandler}
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-Drawer.defaultProps = {
-  width: "300px",
-  placement: "left",
-}
-
-export default Drawer
+export default Drawer;

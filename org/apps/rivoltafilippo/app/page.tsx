@@ -1,17 +1,13 @@
-import { GraphQLClient } from 'graphql-request';
-import { GetAllPosts } from '../types/post';
+'use client';
+
 import Layout from './components/layout';
 import PersonalBlog from './containers/HomePage';
-import { GET_ALL_POSTS } from './lib/graphql/api';
-const graphcms = new GraphQLClient(
-  'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cll67qzsz10ad01uoff4f01vj/master'
-);
 
 export default async function Index() {
-  const { blogPosts } = await graphcms.request<GetAllPosts>(GET_ALL_POSTS);
+  //const { blogPosts } = await graphcms.request<GetAllPosts>(GET_ALL_POSTS);
   return (
     <Layout>
-      <PersonalBlog posts={blogPosts} />
+      <p>test</p>
     </Layout>
   );
   /*
