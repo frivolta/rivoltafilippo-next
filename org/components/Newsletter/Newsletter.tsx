@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import Button from "../Button/button"
-import Input from "../Input/input"
+import React, { useState } from 'react';
+import Button from '../Button/button';
+import Input from '../Input/input';
 
 import {
   NewsletterWrapper,
@@ -10,32 +10,57 @@ import {
   NewsletterInputWrapper,
   ErrorMessage,
   SuccessMessage,
-} from "./newsletter.style"
+} from './newsletter.style';
 
-type NewsletterProps = {}
+type NewsletterProps = {};
 
 const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
-  const [email, setEmail] = useState("")
-  const [success, setSuccess] = useState()
-  const [error, setError] = useState()
+  const [email, setEmail] = useState('');
+  const [success, setSuccess] = useState();
+  const [message, setMessage] = useState<string>('');
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
   const handleChange = (e: any) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+    setMessage('');
+    setError(undefined);
+    setSuccess(undefined);
+  };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-    setSuccess(undefined)
-    setError(undefined)
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setSuccess(undefined);
+      setLoading(true);
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      if (data?.error) {
+        setError(data?.error);
+      } else {
+        setMessage(data?.message ?? 'Thanks for subscribing');
+      }
+    } catch (err: any) {
+      console.log('got err');
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <NewsletterWrapper {...props}>
       <NewsletterInnerWrapper>
         <NewsletterTitle>
           Get The Best Of All Hands Delivered To Your Inbox
         </NewsletterTitle>
-        <NewsletterDescription>
-          Newsletter subscription is temprarily disabled 🙂
-        </NewsletterDescription>
+        {!!message && !error && (
+          <NewsletterDescription>{message}</NewsletterDescription>
+        )}
         <NewsletterInputWrapper onSubmit={handleSubmit}>
           {success ? (
             <SuccessMessage>{success} 🙂</SuccessMessage>
@@ -48,9 +73,8 @@ const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
                 onChange={handleChange}
                 value={email}
                 required
-                disabled
               />
-              <Button title="Subscribe" type="submit" />
+              <Button title="Subscribe" type="submit" isLoading={loading} />
             </>
           )}
         </NewsletterInputWrapper>
@@ -61,7 +85,7 @@ const Newsletter: React.FunctionComponent<NewsletterProps> = ({ ...props }) => {
         )}
       </NewsletterInnerWrapper>
     </NewsletterWrapper>
-  )
-}
+  );
+};
 
-export default Newsletter
+export default Newsletter;
