@@ -14,7 +14,7 @@ export function Index({ posts }: Props) {
     </Layout>
   );
 }
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { blogPosts } = await graphcms.request<GetAllPosts>(GET_ALL_POSTS);
   return { props: { posts: blogPosts } };
 };
