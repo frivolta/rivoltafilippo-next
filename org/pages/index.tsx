@@ -1,3 +1,4 @@
+import { Cta } from 'components/Cta/Cta';
 import Layout from 'components/Layout';
 import PersonalBlog from 'containers/HomePage';
 import { GET_ALL_POSTS } from 'lib/graphql/api';
